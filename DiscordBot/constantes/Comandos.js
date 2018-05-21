@@ -32,7 +32,7 @@ module.exports = {
                     .catch(console.error);
             });
         } else {
-            message.channel.send('Você não tem permissão para usar esse comando!')
+            message.reply('Você não tem permissão para usar esse comando!')
         }
     },
     '<ajuda': (message) => {
@@ -76,6 +76,66 @@ module.exports = {
             message.reply({ embed });
         } else {
             message.reply("Úsuario inválido.");
+        }
+    },
+    '<ban': (message, args) => {
+        let motivo = message.content.substr(message.content.indexOf(' ') + 1);
+        let usuario = message.mentions.users.first();
+        let permissao = message.guild.roles.find("name", "👑4º KING");
+
+        if (message.member.roles.has(permissao.id)) {
+
+            if (message.mentions.users.size < 1) return message.reply("Use <ban @user#666")
+            if (!message.guild.member(usuario).bannable) return message.reply("Esse úsuario possui um cargo alto")
+            if (motivo.length == 0) return message.reply("Você não colocou nenhuma razão")
+
+            message.guild.member(usuario).ban()
+
+            const embed = {
+                author: {
+                    name: usuario.username + " foi banido por " + message.author.tag,
+                    icon_url: "https://media.discordapp.net/attachments/390881397822324736/443911502961967144/anzahemote_kill_by_miyu_chan_x3-dbu3ge6.png",
+                },
+                "description": "Motivo: " + motivo,
+                "color": 3447003,
+                "thumbnail": {
+                    "url": usuario.avatarURL,
+                },
+            };
+
+            message.guild.channels.find("name", "event-log-v2").send({ embed });
+        } else {
+            message.reply("Você não tem permissão para executar esse comando!")
+        }
+    },
+    '<kick': (message, args) => {
+        let motivo = message.content.substr(message.content.indexOf(' ') + 1);
+        let usuario = message.mentions.users.first();
+        let permissao = message.guild.roles.find("name", "👑4º KING");
+
+        if (message.member.roles.has(permissao.id)) {
+
+            if (message.mentions.users.size < 1) return message.reply("Use <kick @user#666")
+            if (!message.guild.member(usuario).kickable) return message.reply("Esse úsuario possui um cargo alto")
+            if (motivo.length == 0) return message.reply("Você não colocou nenhuma razão")
+
+            message.guild.member(usuario).kick()
+
+            const embed = {
+                author: {
+                    name: usuario.username + " foi kickado por " + message.author.tag,
+                    icon_url: "https://media.discordapp.net/attachments/390881397822324736/443911502961967144/anzahemote_kill_by_miyu_chan_x3-dbu3ge6.png",
+                },
+                "description": "Motivo: " + motivo,
+                "color": 3447003,
+                "thumbnail": {
+                    "url": usuario.avatarURL,
+                },
+            };
+
+            message.guild.channels.find("name", "event-log-v2").send({ embed });
+        } else {
+            message.reply("Você não tem permissão para executar esse comando!")
         }
     }
 };
