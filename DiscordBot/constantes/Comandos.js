@@ -47,6 +47,23 @@ module.exports = {
         });
         message.reply("Enviei para você no privado, veja suas mensagens diretas!")
     },
+    '<admin': (message) => {
+        let permissao = message.guild.roles.find("name", "👑4º KING");
+        if (message.member.roles.has(permissao.id)) {
+            message.author.send({
+                embed: {
+                    color: 3447003,
+                    description: "**Esses são os comandos de admin!** \n\n" +
+                        '**<anuncio**: \`Use "<anuncio Mesagem" para enviar um anúncio no privado\` \n' +
+                        '**<ban**: \`Use "<ban @User#666 Motivo" para banir um úsuario\` \n' +
+                        '**<kick**: \`Use "<kick @User#666 Motivo" para kickar um úsuario\` \n'
+                }
+            });
+            message.reply("Enviei para você no privado, veja suas mensagens diretas!")
+        } else {
+            message.reply('Você não tem permissão para usar esse comando!')
+        }
+    },
     '<avatar': (message) => {
         const embed = {
             author: {
