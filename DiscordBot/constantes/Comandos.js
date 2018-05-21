@@ -1,6 +1,6 @@
 module.exports = {
     '<github': (message) => {
-        message.reply('esse é meu o github: https://github.com/shadowbrz')
+        message.reply('esse é o meu github: https://github.com/shadowbrz')
     },
     '<anuncio': (message) => {
         let permissao = message.guild.roles.find("name", "👑4º KING");
