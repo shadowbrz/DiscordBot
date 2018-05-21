@@ -1,6 +1,6 @@
 module.exports = {
     '<github': (message) => {
-        message.channel.send('https://github.com/shadowbrz')
+        message.reply('esse é meu o github: https://github.com/shadowbrz')
     },
     '<anuncio': (message) => {
         let permissao = message.guild.roles.find("name", "👑4º KING");
@@ -45,5 +45,18 @@ module.exports = {
                     '**<link**: \`Link para invite\` \n'
             }
         });
-    }
+    },
+    '<avatar': (message) => {
+        const embed = {
+            author: {
+                name: message.author.username,
+                icon_url: "https://media.discordapp.net/attachments/390881397822324736/443911502961967144/anzahemote_kill_by_miyu_chan_x3-dbu3ge6.png",
+            },
+            "color": 3447003,
+            "image": {
+                "url": message.author.avatarURL,
+            },
+        };
+        message.reply({ embed })
+    },
 };
