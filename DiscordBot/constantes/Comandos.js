@@ -97,6 +97,18 @@ module.exports = {
         let motivo = message.content.substr(message.content.indexOf(' ') + 1);
         let usuario = message.mentions.users.first();
 
+        const embed = {
+            author: {
+                name: usuario.username + " foi banido por " + message.author.tag,
+                icon_url: "https://media.discordapp.net/attachments/390881397822324736/443911502961967144/anzahemote_kill_by_miyu_chan_x3-dbu3ge6.png",
+            },
+            "description": "Motivo: " + motivo,
+            "color": 3447003,
+            "thumbnail": {
+                "url": usuario.avatarURL,
+            },
+        };
+
         if (message.member.hasPermission("ADMINISTRATOR")) {
 
             if (message.mentions.users.size < 1) return message.reply("Use <ban @User#666")
@@ -104,23 +116,11 @@ module.exports = {
 
             if (!message.guild.member(usuario).hasPermission("ADMINISTRATOR")) {
                 message.guild.member(usuario).ban()
+                message.guild.channels.find("name", "event-log-v2").send({ embed });
             } else {
                 message.reply("Esse úsuario possui um cargo alto")
             }
 
-            const embed = {
-                author: {
-                    name: usuario.username + " foi banido por " + message.author.tag,
-                    icon_url: "https://media.discordapp.net/attachments/390881397822324736/443911502961967144/anzahemote_kill_by_miyu_chan_x3-dbu3ge6.png",
-                },
-                "description": "Motivo: " + motivo,
-                "color": 3447003,
-                "thumbnail": {
-                    "url": usuario.avatarURL,
-                },
-            };
-
-            message.guild.channels.find("name", "event-log-v2").send({ embed });
         } else {
             message.reply("Você não tem permissão para executar esse comando!")
         }
@@ -129,6 +129,18 @@ module.exports = {
         let motivo = message.content.substr(message.content.indexOf(' ') + 1);
         let usuario = message.mentions.users.first();
 
+        const embed = {
+            author: {
+                name: usuario.username + " foi kickado por " + message.author.tag,
+                icon_url: "https://media.discordapp.net/attachments/390881397822324736/443911502961967144/anzahemote_kill_by_miyu_chan_x3-dbu3ge6.png",
+            },
+            "description": "Motivo: " + motivo,
+            "color": 3447003,
+            "thumbnail": {
+                "url": usuario.avatarURL,
+            },
+        };
+
         if (message.member.hasPermission("ADMINISTRATOR")) {
 
             if (message.mentions.users.size < 1) return message.reply("Use <kick @User#666")
@@ -136,23 +148,11 @@ module.exports = {
 
             if (!message.guild.member(usuario).hasPermission("ADMINISTRATOR")) {
                 message.guild.member(usuario).kick()
+                message.guild.channels.find("name", "event-log-v2").send({ embed });
             } else {
                 message.reply("Esse úsuario possui um cargo alto")
             }
 
-            const embed = {
-                author: {
-                    name: usuario.username + " foi kickado por " + message.author.tag,
-                    icon_url: "https://media.discordapp.net/attachments/390881397822324736/443911502961967144/anzahemote_kill_by_miyu_chan_x3-dbu3ge6.png",
-                },
-                "description": "Motivo: " + motivo,
-                "color": 3447003,
-                "thumbnail": {
-                    "url": usuario.avatarURL,
-                },
-            };
-
-            message.guild.channels.find("name", "event-log-v2").send({ embed });
         } else {
             message.reply("Você não tem permissão para executar esse comando!")
         }
