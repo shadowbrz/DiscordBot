@@ -1,10 +1,9 @@
 module.exports = {
     '<github': (message) => {
-        message.reply('esse é o meu github: https://github.com/shadowbrz')
+        message.reply('esse é o meu github: https://github.com/shadowbrz/DiscordBot')
     },
     '<anuncio': (message) => {
-        let permissao = message.guild.roles.find("name", "👑4º KING");
-        if (message.member.roles.has(permissao.id)) {
+        if (message.member.hasPermission("ADMINISTRATOR")) {
             let mensagem = message.content.substr(message.content.indexOf(' ') + 1);
             const embed = {
                 "description": mensagem,
@@ -48,8 +47,7 @@ module.exports = {
         message.reply("Enviei para você no privado, veja suas mensagens diretas!")
     },
     '<admin': (message) => {
-        let permissao = message.guild.roles.find("name", "👑4º KING");
-        if (message.member.roles.has(permissao.id)) {
+        if (message.member.hasPermission("ADMINISTRATOR")) {
             message.author.send({
                 embed: {
                     color: 3447003,
@@ -98,11 +96,10 @@ module.exports = {
     '<ban': (message, args) => {
         let motivo = message.content.substr(message.content.indexOf(' ') + 1);
         let usuario = message.mentions.users.first();
-        let permissao = message.guild.roles.find("name", "👑4º KING");
 
-        if (message.member.roles.has(permissao.id)) {
+        if (message.member.hasPermission("ADMINISTRATOR")) {
 
-            if (message.mentions.users.size < 1) return message.reply("Use <ban @user#666")
+            if (message.mentions.users.size < 1) return message.reply("Use <ban @User#666")
             if (!message.guild.member(usuario).bannable) return message.reply("Esse úsuario possui um cargo alto")
             if (motivo.length == 0) return message.reply("Você não colocou nenhuma razão")
 
@@ -128,11 +125,10 @@ module.exports = {
     '<kick': (message, args) => {
         let motivo = message.content.substr(message.content.indexOf(' ') + 1);
         let usuario = message.mentions.users.first();
-        let permissao = message.guild.roles.find("name", "👑4º KING");
 
-        if (message.member.roles.has(permissao.id)) {
+        if (message.member.hasPermission("ADMINISTRATOR")) {
 
-            if (message.mentions.users.size < 1) return message.reply("Use <kick @user#666")
+            if (message.mentions.users.size < 1) return message.reply("Use <kick @User#666")
             if (!message.guild.member(usuario).kickable) return message.reply("Esse úsuario possui um cargo alto")
             if (motivo.length == 0) return message.reply("Você não colocou nenhuma razão")
 
@@ -151,6 +147,17 @@ module.exports = {
             };
 
             message.guild.channels.find("name", "event-log-v2").send({ embed });
+        } else {
+            message.reply("Você não tem permissão para executar esse comando!")
+        }
+    },
+    '<apagar': (message) => {
+        const args = message.content.substr(message.content.indexOf(' '));
+        if (message.member.hasPermission("ADMINISTRATOR")) {
+            if (args.length == 0) return message.reply("Você não colocou a quantidade")
+            message.channel.bulkDelete(args).then(() => {
+                message.channel.send(`\`${args} Mensagens foram deletas com sucesso\``).then(msg => msg.delete(4000))
+            });
         } else {
             message.reply("Você não tem permissão para executar esse comando!")
         }
