@@ -100,10 +100,13 @@ module.exports = {
         if (message.member.hasPermission("ADMINISTRATOR")) {
 
             if (message.mentions.users.size < 1) return message.reply("Use <ban @User#666")
-            if (!message.guild.member(usuario).bannable) return message.reply("Esse úsuario possui um cargo alto")
             if (motivo.length == 0) return message.reply("Você não colocou nenhuma razão")
 
-            message.guild.member(usuario).ban()
+            if (!message.guild.member(usuario).hasPermission("ADMINISTRATOR")) {
+                message.guild.member(usuario).ban()
+            } else {
+                message.reply("Esse úsuario possui um cargo alto")
+            }
 
             const embed = {
                 author: {
@@ -129,10 +132,13 @@ module.exports = {
         if (message.member.hasPermission("ADMINISTRATOR")) {
 
             if (message.mentions.users.size < 1) return message.reply("Use <kick @User#666")
-            if (!message.guild.member(usuario).kickable) return message.reply("Esse úsuario possui um cargo alto")
             if (motivo.length == 0) return message.reply("Você não colocou nenhuma razão")
 
-            message.guild.member(usuario).kick()
+            if (!message.guild.member(usuario).hasPermission("ADMINISTRATOR")) {
+                message.guild.member(usuario).kick()
+            } else {
+                message.reply("Esse úsuario possui um cargo alto")
+            }
 
             const embed = {
                 author: {
