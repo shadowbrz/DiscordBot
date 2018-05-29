@@ -14,7 +14,11 @@ bot.on('ready', function () {
 bot.on('message', message => {
     Object.keys(Comandos).map(key => {
         if (message.content.startsWith(key)) {
-            Comandos[key](message)
+            if (message.guild) {
+                Comandos[key](message)
+            } else {
+                message.reply("Você não pode usar comandos aqui!")
+            }
         }
     });
 });
