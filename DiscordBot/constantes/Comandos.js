@@ -1,28 +1,29 @@
+
 module.exports = {
     '<github': (message) => {
         message.reply('esse é o meu github: https://github.com/shadowbrz/DiscordBot')
     },
     '<anuncio': (message) => {
-        if (message.guild.channels.find("name", "shteste-bot")) {
+        if (message.guild.channels.find("name", "teste")) {
             if (message.member.hasPermission("ADMINISTRATOR")) {
                 let mensagem = message.content.substr(message.content.indexOf(' ') + 1);
                 const embed = {
                     "description": mensagem,
                     "color": 3447003,
                     "footer": {
-                        "icon_url": "https://media.discordapp.net/attachments/390881397822324736/443911502961967144/anzahemote_kill_by_miyu_chan_x3-dbu3ge6.png",
-                        "text": "NêmesisBOT#6583"
+                        "icon_url": "LINK IMAGEM",
+                        "text": `${__bot.user.tag}`
                     },
                     "thumbnail": {
-                        "url": "https://media.discordapp.net/attachments/390881397822324736/443911502961967144/anzahemote_kill_by_miyu_chan_x3-dbu3ge6.png"
+                        "url": "LINK IMAGEM"
                     },
                     "image": {
-                        "url": "https://cdn.discordapp.com/attachments/442430375784873995/449043944161148929/unnamed_2.gif"
+                        "url": "LINK IMAGEM"
                     },
                     "fields": [
                         {
                             "name": "Servidor:",
-                            "value": "𝘕ê𝘮𝘦𝘴𝘪𝘴 \nhttps://discord.gg/QkzUbuG"
+                            "value": "NOME DO SERVER \nLINK DO DISCORD"
                         }
                     ]
                 };
@@ -39,7 +40,7 @@ module.exports = {
         }
     },
     '<ajuda': (message) => {
-        if (message.guild.channels.find("name", "shteste-bot")) {
+        if (message.guild.channels.find("name", "teste")) {
             const embed = {
                 title: "**Esses são os meus comandos! \n**",
                 "color": 3447003,
@@ -61,11 +62,11 @@ module.exports = {
                 }
                 ],
                 "footer": {
-                    "icon_url": "https://media.discordapp.net/attachments/390881397822324736/443911502961967144/anzahemote_kill_by_miyu_chan_x3-dbu3ge6.png",
-                    "text": "NêmesisBOT#6583"
+                    "icon_url": "LINK IMAGEM",
+                    "text": `${__bot.user.tag}`
                 },
                 "thumbnail": {
-                    "url": "https://media.discordapp.net/attachments/390881397822324736/443911502961967144/anzahemote_kill_by_miyu_chan_x3-dbu3ge6.png"
+                    "url": "LINK IMAGEM"
                 },
             };
             message.author.send({ embed })
@@ -75,7 +76,7 @@ module.exports = {
         }
     },
     '<admin': (message) => {
-        if (message.guild.channels.find("name", "shteste-bot")) {
+        if (message.guild.channels.find("name", "teste")) {
             if (message.member.hasPermission("ADMINISTRATOR")) {
                 const embed = {
                     title: "**Lista de Comandos \n**",
@@ -98,11 +99,11 @@ module.exports = {
                     }
                     ],
                     "footer": {
-                        "icon_url": "https://media.discordapp.net/attachments/390881397822324736/443911502961967144/anzahemote_kill_by_miyu_chan_x3-dbu3ge6.png",
-                        "text": "NêmesisBOT#6583"
+                        "icon_url": "LINK IMAGEM",
+                        "text": `${__bot.user.tag}`
                     },
                     "thumbnail": {
-                        "url": "https://media.discordapp.net/attachments/390881397822324736/443911502961967144/anzahemote_kill_by_miyu_chan_x3-dbu3ge6.png"
+                        "url": "LINK IMAGEM"
                     },
                 };
                 message.author.send({ embed })
@@ -115,51 +116,31 @@ module.exports = {
         }
     },
     '<avatar': (message) => {
-        if (message.guild.channels.find("name", "💬-chat-geral")) {
-            const embed = {
-                author: {
-                    name: message.author.username,
-                    icon_url: "https://media.discordapp.net/attachments/390881397822324736/443911502961967144/anzahemote_kill_by_miyu_chan_x3-dbu3ge6.png",
-                },
-                "color": 3447003,
-                "image": {
-                    "url": message.author.avatarURL,
-                },
-            };
-            message.reply({ embed })
-        } else {
-            message.reply('Você não pode usar esse comando aqui!')
-        }
-    },
-    '<pegaravatar': (message) => {
-        if (message.guild.channels.find("name", "💬-chat-geral")) {
-            let usuario = message.mentions.users.first();
+        if (message.guild.channels.find("name", "teste")) {
+            let usuario = message.mentions.users.first() || message.author;
             const embed = {
                 author: {
                     name: usuario.username,
-                    icon_url: "https://media.discordapp.net/attachments/390881397822324736/443911502961967144/anzahemote_kill_by_miyu_chan_x3-dbu3ge6.png",
+                    icon_url: "LINK IMAGEM",
                 },
                 "color": 3447003,
                 "image": {
                     "url": usuario.avatarURL,
                 },
             };
-            if (message.mentions.users.first()) {
-                message.reply({ embed });
-            } else {
-                message.reply("Úsuario inválido.");
-            }
+            message.reply({ embed });
         } else {
             message.reply('Você não pode usar esse comando aqui!')
         }
     },
     '<ban': (message) => {
-        let motivo = message.content.substr(message.content.indexOf(' ') + 1);
+        let args = message.content.slice().trim().split(/ +/g);
+        let motivo = args.slice(2).join(' ');
         let usuario = message.mentions.users.first();
         const embed = {
             author: {
                 name: usuario.username + " foi banido por " + message.author.tag,
-                icon_url: "https://media.discordapp.net/attachments/390881397822324736/443911502961967144/anzahemote_kill_by_miyu_chan_x3-dbu3ge6.png",
+                icon_url: "LINK IMAGEM",
             },
             "description": "Motivo: " + motivo,
             "color": 3447003,
@@ -174,7 +155,7 @@ module.exports = {
 
             if (!message.guild.member(usuario).hasPermission("ADMINISTRATOR")) {
                 message.guild.member(usuario).ban()
-                message.guild.channels.find("name", "event-log-v2").send({ embed });
+                message.guild.channels.find("name", "teste").send({ embed });
             } else {
                 message.reply("Esse úsuario possui um cargo alto")
             }
@@ -184,12 +165,13 @@ module.exports = {
         }
     },
     '<kick': (message) => {
-        let motivo = message.content.substr(message.content.indexOf(' ') + 1);
+        let args = message.content.slice().trim().split(/ +/g);
+        let motivo = args.slice(2).join(' ');
         let usuario = message.mentions.users.first();
         const embed = {
             author: {
                 name: usuario.username + " foi kickado por " + message.author.tag,
-                icon_url: "https://media.discordapp.net/attachments/390881397822324736/443911502961967144/anzahemote_kill_by_miyu_chan_x3-dbu3ge6.png",
+                icon_url: "LINK IMAGEM",
             },
             "description": "Motivo: " + motivo,
             "color": 3447003,
@@ -224,7 +206,7 @@ module.exports = {
             message.reply("Você não tem permissão para executar esse comando!")
         }
     },
-    '<perguntar': (message, args) => {
+    '<perguntar': (message) => {
         let questao = message.content.substr(message.content.indexOf(' '));
         let falas = ['Sou',
             ':no:',
@@ -235,7 +217,6 @@ module.exports = {
             'É verdade',
             'Não é verdade',
         ];
-
         let result = Math.floor((Math.random() * falas.length) + 0);
         message.reply(falas[result]);
     },
@@ -248,5 +229,17 @@ module.exports = {
         message.channel.send(`<@${usuarioRandom.id}>, você é um random`)
             .then(message => console.log(`Mensagem enviada com sucesso: ${message.content}`))
             .catch(console.error)
+    },
+    '<cutucar': (message) => {
+        let usuario = message.mentions.users.first();
+        let args = message.content.slice().trim().split(/ +/g);
+        let mensagem = args.slice(2).join(' ');
+
+        if (message.mentions.users.first()) {
+            usuario.send(`${message.author.username} cutucou você: ${mensagem}`)
+                .then(message => console.log(`Mensagem enviada com sucesso: ${message.content}`))
+        } else {
+            message.reply("Úsuario inválido.");
+        }
     }
-};  
+};
