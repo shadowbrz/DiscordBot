@@ -139,10 +139,10 @@ module.exports = {
         let usuario = message.mentions.users.first();
         const embed = {
             author: {
-                name: usuario.username + " foi banido por " + message.author.tag,
+                name: `${usuario.username} foi banido por ${message.author.tag}`,
                 icon_url: "LINK IMAGEM",
             },
-            "description": "Motivo: " + motivo,
+            "description": `Motivo: ${motivo}`,
             "color": 3447003,
             "thumbnail": {
                 "url": usuario.avatarURL,
@@ -170,10 +170,10 @@ module.exports = {
         let usuario = message.mentions.users.first();
         const embed = {
             author: {
-                name: usuario.username + " foi kickado por " + message.author.tag,
+                name: `${usuario.username} foi kickado por ${message.author.tag}`,
                 icon_url: "LINK IMAGEM",
             },
-            "description": "Motivo: " + motivo,
+            "description": `Motivo: ${motivo}`,
             "color": 3447003,
             "thumbnail": {
                 "url": usuario.avatarURL,

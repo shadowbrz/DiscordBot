@@ -30,7 +30,7 @@ __bot.on("guildMemberAdd", (message, member) => {
             name: "Bem-vindo(a)!",
             icon_url: "LINK IMAGEM",
         },
-        "description": "Olá " + message.toString() + ", Seja bem vindo(a) ao NOME DO SERVER!",
+        "description": `Olá ${message.toString()}, Seja bem vindo(a) ao NOME DO SERVER!`,
         "color": 3447003,
         "thumbnail": {
             "url": message.user.avatarURL,
