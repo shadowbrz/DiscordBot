@@ -24,7 +24,7 @@ module.exports = {
                         "fields": [
                             {
                                 "name": "Servidor:",
-                                "value": "NOME DO SERVER \nLINK DO DISCORD"
+                                "value": `${guild.name} \nLINK DO DISCORD`
                             }
                         ]
                     };
