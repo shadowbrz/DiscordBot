@@ -4,40 +4,42 @@ module.exports = {
         message.reply('esse é o meu github: https://github.com/shadowbrz/DiscordBot')
     },
     '<anuncio': (message) => {
-        if (message.guild.channels.find("name", "teste")) {
-            if (message.member.hasPermission("ADMINISTRATOR")) {
-                let mensagem = message.content.substr(message.content.indexOf(' ') + 1);
-                const embed = {
-                    "description": mensagem,
-                    "color": 3447003,
-                    "footer": {
-                        "icon_url": "LINK IMAGEM",
-                        "text": `${__bot.user.tag}`
-                    },
-                    "thumbnail": {
-                        "url": "LINK IMAGEM"
-                    },
-                    "image": {
-                        "url": "LINK IMAGEM"
-                    },
-                    "fields": [
-                        {
-                            "name": "Servidor:",
-                            "value": "NOME DO SERVER \nLINK DO DISCORD"
-                        }
-                    ]
-                };
-                message.guild.members.forEach(member => {
-                    member.send({ embed })
-                        .then(message => console.log(`Mensagem enviada com sucesso: ${message.content}`))
-                        .catch(console.error);
-                });
+        __bot.guilds.forEach(guild => {
+            if (message.guild.channels.find("name", "teste")) {
+                if (message.member.hasPermission("ADMINISTRATOR")) {
+                    let mensagem = message.content.substr(message.content.indexOf(' ') + 1);
+                    const embed = {
+                        "description": mensagem,
+                        "color": 3447003,
+                        "footer": {
+                            "icon_url": "LINK IMAGEM",
+                            "text": `${__bot.user.tag}`
+                        },
+                        "thumbnail": {
+                            "url": "LINK IMAGEM"
+                        },
+                        "image": {
+                            "url": "LINK IMAGEM"
+                        },
+                        "fields": [
+                            {
+                                "name": "Servidor:",
+                                "value": "NOME DO SERVER \nLINK DO DISCORD"
+                            }
+                        ]
+                    };
+                    message.guild.members.forEach(member => {
+                        member.send({ embed })
+                            .then(message => console.log(`Mensagem enviada com sucesso: ${message.content}`))
+                            .catch(console.error);
+                    });
+                } else {
+                    message.reply('Você não tem permissão para usar esse comando!')
+                }
             } else {
-                message.reply('Você não tem permissão para usar esse comando!')
+                message.reply('Você não pode usar esse comando aqui!')
             }
-        } else {
-            message.reply('Você não pode usar esse comando aqui!')
-        }
+        })
     },
     '<ajuda': (message) => {
         if (message.guild.channels.find("name", "teste")) {
