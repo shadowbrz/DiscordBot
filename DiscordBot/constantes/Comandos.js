@@ -52,16 +52,16 @@ module.exports = {
                 },
                 {
                     name: "**<avatar:**",
-                    value: "Para pegar seu avatar"
+                    value: "Para pegar seu avatar ou \"<avatar @User#666\" para pegar o avatar de outro usuario"
                 },
                 {
-                    name: "<pegaravatar:",
-                    value: "Use \"<kick @User#666\" Motivo para kickar um úsuario"
+                    name: "<cutucar:",
+                    value: "Use \"<cutucar @User#666 mensagem\" Para cutucar alguém"
                 },
                 {
-                    name: "<apagar:",
-                    value: "Use \"<pegaravatar @Shadow#2864\" para pegar o avatar de outra pessoa"
-                }
+                    name: "<random:",
+                    value: "Use \"<random\" Para marcar algum random :)"
+                },
                 ],
                 "footer": {
                     "icon_url": "LINK IMAGEM",
