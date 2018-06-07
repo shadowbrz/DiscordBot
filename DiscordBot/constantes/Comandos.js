@@ -13,7 +13,7 @@ module.exports = {
                         "color": 3447003,
                         "footer": {
                             "icon_url": "LINK IMAGEM",
-                            "text": `${__bot.user.tag}`
+                            "text": __bot.user.tag
                         },
                         "thumbnail": {
                             "url": "LINK IMAGEM"
@@ -65,7 +65,7 @@ module.exports = {
                 ],
                 "footer": {
                     "icon_url": "LINK IMAGEM",
-                    "text": `${__bot.user.tag}`
+                    "text": __bot.user.tag
                 },
                 "thumbnail": {
                     "url": "LINK IMAGEM"
@@ -102,7 +102,7 @@ module.exports = {
                     ],
                     "footer": {
                         "icon_url": "LINK IMAGEM",
-                        "text": `${__bot.user.tag}`
+                        "text": __bot.user.tag
                     },
                     "thumbnail": {
                         "url": "LINK IMAGEM"
@@ -123,7 +123,7 @@ module.exports = {
             const embed = {
                 author: {
                     name: usuario.username,
-                    icon_url: "LINK IMAGEM",
+                    icon_url: __bot.user.avatarURL,
                 },
                 "color": 3447003,
                 "image": {
@@ -142,7 +142,7 @@ module.exports = {
         const embed = {
             author: {
                 name: `${usuario.username} foi banido por ${message.author.tag}`,
-                icon_url: "LINK IMAGEM",
+                icon_url: __bot.user.avatarURL,
             },
             "description": `Motivo: ${motivo}`,
             "color": 3447003,
@@ -173,7 +173,7 @@ module.exports = {
         const embed = {
             author: {
                 name: `${usuario.username} foi kickado por ${message.author.tag}`,
-                icon_url: "LINK IMAGEM",
+                icon_url: __bot.user.avatarURL,
             },
             "description": `Motivo: ${motivo}`,
             "color": 3447003,
@@ -236,10 +236,22 @@ module.exports = {
         let usuario = message.mentions.users.first();
         let args = message.content.slice().trim().split(/ +/g);
         let mensagem = args.slice(2).join(' ');
-
+        const embed = {
+            description: `**${message.author.username}** cutucou você.\n`,
+            "color": 3447003,
+            fields: [{
+                name: "**Mensagem:**",
+                value: mensagem
+            },
+            ],
+            "thumbnail": {
+                "url": message.author.avatarURL
+            },
+        };
         if (message.mentions.users.first()) {
-            usuario.send(`${message.author.username} cutucou você: ${mensagem}`)
-                .then(message => console.log(`Mensagem enviada com sucesso: ${message.content}`))
+            usuario.send({ embed })
+                .then(message => console.log(`Mensagem enviada com sucesso: ${mensagem}`))
+                .catch(console.error)
         } else {
             message.reply("Úsuario inválido.");
         }
