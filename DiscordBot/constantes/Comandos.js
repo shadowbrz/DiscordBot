@@ -237,7 +237,7 @@ module.exports = {
         let args = message.content.slice().trim().split(/ +/g);
         let mensagem = args.slice(2).join(' ');
         const embed = {
-            description: `**${message.author.username}** cutucou você.\n`,
+            title: `${message.author.tag} cutucou você.\n`,
             "color": 3447003,
             fields: [{
                 name: "**Mensagem:**",
