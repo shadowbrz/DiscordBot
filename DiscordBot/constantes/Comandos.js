@@ -4,7 +4,6 @@ module.exports = {
         message.reply('esse é o meu github: https://github.com/shadowbrz/DiscordBot')
     },
     '<anuncio': (message) => {
-        __bot.guilds.forEach(guild => {
             if (message.guild.channels.find("name", "teste")) {
                 if (message.member.hasPermission("ADMINISTRATOR")) {
                     let mensagem = message.content.substr(message.content.indexOf(' ') + 1);
@@ -24,7 +23,7 @@ module.exports = {
                         "fields": [
                             {
                                 "name": "Servidor:",
-                                "value": `${guild.name} \nLINK DO DISCORD`
+                                "value": `${message.guild.name} \nLINK DO DISCORD`
                             }
                         ]
                     };
@@ -39,7 +38,6 @@ module.exports = {
             } else {
                 message.reply('Você não pode usar esse comando aqui!')
             }
-        })
     },
     '<ajuda': (message) => {
         if (message.guild.channels.find("name", "teste")) {

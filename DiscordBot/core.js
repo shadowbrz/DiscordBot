@@ -24,18 +24,16 @@ __bot.on('message', message => {
 });
 
 __bot.on("guildMemberAdd", (message) => {
-    __bot.guilds.forEach(guild => {
         const embed = {
             author: {
                 name: "Bem-vindo(a)!",
                 icon_url: "LINK IMAGEM",
             },
-            "description": `Olá ${message.toString()}, Seja bem vindo(a) ao ${guild.name}!`,
+            "description": `Olá ${message.toString()}, Seja bem vindo(a) ao ${message.guild.name}!`,
             "color": 3447003,
             "thumbnail": {
                 "url": message.user.avatarURL,
             },
         };
         message.guild.channels.find("name", "teste").send({ embed });
-    })
 });
