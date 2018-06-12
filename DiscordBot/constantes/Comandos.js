@@ -87,11 +87,11 @@ module.exports = {
                     },
                     {
                         name: "**<ban:**",
-                        value: "Use \`<ban @User#666\` Motivo para banir um úsuario"
+                        value: "Use \`<ban @User#666\` Motivo para banir um usuário"
                     },
                     {
                         name: "<kick:",
-                        value: "Use \`<kick @User#666\` Motivo para kickar um úsuario"
+                        value: "Use \`<kick @User#666\` Motivo para kickar um usuário"
                     },
                     {
                         name: "<apagar:",
@@ -157,7 +157,7 @@ module.exports = {
                 message.guild.member(usuario).ban()
                 message.guild.channels.find("name", "teste").send({ embed });
             } else {
-                message.reply("Esse úsuario possui um cargo alto")
+                message.reply("Esse usuário possui um cargo alto")
             }
 
         } else {
@@ -188,7 +188,7 @@ module.exports = {
                 message.guild.member(usuario).kick()
                 message.guild.channels.find("name", "event-log-v2").send({ embed });
             } else {
-                message.reply("Esse úsuario possui um cargo alto")
+                message.reply("Esse usuário possui um cargo alto")
             }
 
         } else {
@@ -251,7 +251,7 @@ module.exports = {
                 .then(message => console.log(`Mensagem enviada com sucesso: ${mensagem}`))
                 .catch(console.error)
         } else {
-            message.reply("Úsuario inválido.");
+            message.reply("Usuário inválido.");
         }
     }
 };
